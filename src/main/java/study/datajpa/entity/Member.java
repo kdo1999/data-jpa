@@ -7,6 +7,11 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter @Setter
 @ToString(of = {"id", "username", "age"})
+
+@NamedQuery(
+        name="Member.findByUsername",
+        query="select m from Member m where m.username = :username"
+) //컴파일시 문법오류가 발견되면 컴파일오류를 내준다.
 public class Member {
     @Id @GeneratedValue
     @Column(name = "member_id")
@@ -27,6 +32,11 @@ public class Member {
         if (team != null) {
             changeTeam(team);
         }
+    }
+
+    public Member(String username, int age) {
+        this.username = username;
+        this.age = age;
     }
 
     /**
