@@ -12,12 +12,14 @@ import lombok.*;
         name="Member.findByUsername",
         query="select m from Member m where m.username = :username"
 ) //컴파일시 문법오류가 발견되면 컴파일오류를 내준다.
-public class Member {
+@NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
+public class Member extends BaseEntity{
     @Id @GeneratedValue
     @Column(name = "member_id")
     private Long id;
     private String username;
     private int age;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
