@@ -269,8 +269,10 @@ class MemberRepositoryTest {
 
         //then
         for (Member member : members) {
-            System.out.println("member = " + member.getUsername());
+            System.out.println("member.getUsername() = " + member.getUsername());
             System.out.println("member.getTeam().getName() = " + member.getTeam().getName());
+
+            //MemberController init로 인해 실패
         }
     }
 

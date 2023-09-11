@@ -13,7 +13,12 @@ spring:
         format_sql: true
 #        default_batch_fetch_size: 100
 #    open-in-view: true
-
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 2000 #페이지 글로벌 설정
+        one-indexed-parameters: true
 logging.level:
     org.hibernate.SQL: debug
 #    org.hibernate.orm.jdbc.bind: trace
